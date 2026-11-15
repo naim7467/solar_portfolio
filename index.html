@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B1120">
     <title>Elias Naim | Power & Solar Site Engineer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -71,16 +72,16 @@
         }
 
         .glass-card {
-            background: rgba(17, 24, 39, 0.6);
+            background: rgba(17, 24, 39, 0.65);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .glass-card:hover {
-            border-color: rgba(16, 185, 129, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.45);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px -18px rgba(16, 185, 129, 0.35);
         }
 
         .gradient-text {
@@ -89,21 +90,32 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .gradient-border {
-            position: relative;
-            border-radius: 0.75rem;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(6, 182, 212, 0.1));
-            padding: 1px;
+        .project-image {
+            transition: transform 0.5s ease;
         }
 
-        .gradient-border-inner {
-            background: #111827;
-            border-radius: calc(0.75rem - 1px);
+        .glass-card:hover .project-image {
+            transform: scale(1.04);
+        }
+
+        .filter-btn.active {
+            background-color: #10B981;
+            color: #030712;
+            border-color: #10B981;
+            font-weight: 700;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-accent selection:text-black">
 
+    <!-- Header & Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-gray-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#hero" class="flex items-center space-x-3 group">
@@ -117,10 +129,11 @@
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center space-x-8">
+            <nav class="hidden md:flex items-center space-x-7">
                 <a href="#about" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">About</a>
                 <a href="#experience" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">Experience</a>
                 <a href="#skills" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">Skills</a>
+                <a href="#gallery" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">Gallery</a>
                 <a href="#education" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">Education</a>
                 <a href="#contact" class="px-5 py-2.5 text-sm font-semibold text-gray-950 bg-brand-accent hover:bg-brand-accentHover rounded-lg transition-all shadow-md shadow-brand-accent/20 hover:shadow-brand-accent/40">Get in Touch</a>
             </nav>
@@ -136,6 +149,7 @@
             <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">About</a>
             <a href="#experience" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Experience</a>
             <a href="#skills" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Skills</a>
+            <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Gallery</a>
             <a href="#education" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Education</a>
             <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-brand-accent hover:bg-gray-800">Contact Me</a>
         </div>
@@ -143,8 +157,8 @@
 
     <main class="pt-20">
 
+        <!-- Hero Section -->
         <section id="hero" class="relative min-h-[90vh] flex items-center justify-center py-20 overflow-hidden">
-            <!-- Background Glow Effects -->
             <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-accent/15 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute bottom-10 right-10 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -192,9 +206,9 @@
                                 <i class="fa-solid fa-paper-plane"></i>
                                 <span>Contact Me Directly</span>
                             </a>
-                            <a href="#experience" class="w-full sm:w-auto px-8 py-3.5 bg-brand-card hover:bg-gray-800 text-gray-200 border border-gray-700 font-semibold rounded-xl transition-all text-center flex items-center justify-center space-x-2">
-                                <i class="fa-solid fa-briefcase text-gray-400"></i>
-                                <span>View Experience</span>
+                            <a href="#gallery" class="w-full sm:w-auto px-8 py-3.5 bg-brand-card hover:bg-gray-800 text-gray-200 border border-gray-700 font-semibold rounded-xl transition-all text-center flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-images text-brand-accent"></i>
+                                <span>View Project Gallery</span>
                             </a>
                         </div>
                     </div>
@@ -202,16 +216,13 @@
                     <!-- Right Profile Banner & Highlights -->
                     <div class="lg:col-span-5 flex justify-center">
                         <div class="relative max-w-sm w-full">
-                            <!-- Gradient Glow Backing -->
                             <div class="absolute -inset-1 bg-gradient-to-r from-brand-accent to-brand-cyan rounded-3xl blur opacity-30"></div>
                             
                             <div class="relative glass-card rounded-2xl p-6 border border-gray-800 text-center space-y-6">
-                                <!-- Profile Photo Frame -->
                                 <div class="relative w-44 h-44 mx-auto rounded-full overflow-hidden border-4 border-brand-accent/40 shadow-2xl">
                                     <img src="https://i.postimg.cc/xTZ260WJ/profile-pic.jpg" 
                                          alt="Elias Naim - Power & Solar Site Engineer" 
                                          class="w-full h-full object-cover">
-                                   <!-- https://placehold.co/400x400/10B981/ffffff?text=Elias+Naim -->
                                 </div>
 
                                 <div>
@@ -249,6 +260,7 @@
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about" class="py-20 bg-brand-dark/50 border-y border-gray-800/60">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
@@ -258,7 +270,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Feature Box 1 -->
                     <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
                         <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 text-brand-accent flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-solar-panel"></i>
@@ -269,7 +280,6 @@
                         </p>
                     </div>
 
-                    <!-- Feature Box 2 -->
                     <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
                         <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-users-gear"></i>
@@ -280,7 +290,6 @@
                         </p>
                     </div>
 
-                    <!-- Feature Box 3 -->
                     <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
                         <div class="w-12 h-12 rounded-xl bg-brand-amber/10 border border-brand-amber/30 text-brand-amber flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-shield-halved"></i>
@@ -294,6 +303,7 @@
             </div>
         </section>
 
+        <!-- Experience Section -->
         <section id="experience" class="py-20 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
@@ -303,14 +313,12 @@
                 </div>
 
                 <div class="relative max-w-4xl mx-auto">
-                    <!-- Vertical Timeline Line -->
                     <div class="hidden sm:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-800 -translate-x-1/2"></div>
 
                     <div class="space-y-12">
 
                         <!-- Item 1: Dhaly Infratech -->
                         <div class="relative flex flex-col sm:flex-row items-center group">
-                            <!-- Marker Dot -->
                             <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-card border-2 border-brand-accent text-brand-accent items-center justify-center shadow-lg z-10">
                                 <i class="fa-solid fa-sun text-xs"></i>
                             </div>
@@ -349,7 +357,6 @@
 
                         <!-- Item 2: IT World Computer -->
                         <div class="relative flex flex-col sm:flex-row items-center group">
-                            <!-- Marker Dot -->
                             <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-card border-2 border-brand-cyan text-brand-cyan items-center justify-center shadow-lg z-10">
                                 <i class="fa-solid fa-video text-xs"></i>
                             </div>
@@ -388,7 +395,6 @@
 
                         <!-- Item 3: Genius Solution -->
                         <div class="relative flex flex-col sm:flex-row items-center group">
-                            <!-- Marker Dot -->
                             <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-card border-2 border-brand-amber text-brand-amber items-center justify-center shadow-lg z-10">
                                 <i class="fa-solid fa-desktop text-xs"></i>
                             </div>
@@ -423,7 +429,6 @@
 
                         <!-- Item 4: Internship -->
                         <div class="relative flex flex-col sm:flex-row items-center group">
-                            <!-- Marker Dot -->
                             <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-card border-2 border-purple-500 text-purple-400 items-center justify-center shadow-lg z-10">
                                 <i class="fa-solid fa-car-battery text-xs"></i>
                             </div>
@@ -457,6 +462,7 @@
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills" class="py-20 bg-brand-dark/50 border-y border-gray-800/60">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
@@ -474,7 +480,6 @@
                             <span>Engineering & Technical Skills</span>
                         </h3>
 
-                        <!-- Skill Item 1 -->
                         <div>
                             <div class="flex justify-between text-sm font-semibold mb-2">
                                 <span class="text-gray-200">Solar PV Installation, Testing & O&M</span>
@@ -485,7 +490,6 @@
                             </div>
                         </div>
 
-                        <!-- Skill Item 2 -->
                         <div>
                             <div class="flex justify-between text-sm font-semibold mb-2">
                                 <span class="text-gray-200">DC/AC Wiring & Circuit Testing</span>
@@ -496,7 +500,6 @@
                             </div>
                         </div>
 
-                        <!-- Skill Item 3 -->
                         <div>
                             <div class="flex justify-between text-sm font-semibold mb-2">
                                 <span class="text-gray-200">Site Surveying & Mounting Layout Planning</span>
@@ -507,7 +510,6 @@
                             </div>
                         </div>
 
-                        <!-- Skill Item 4 -->
                         <div>
                             <div class="flex justify-between text-sm font-semibold mb-2">
                                 <span class="text-gray-200">Inverter Configuration & Electrical Diagnostics</span>
@@ -518,7 +520,6 @@
                             </div>
                         </div>
 
-                        <!-- Skill Item 5 -->
                         <div>
                             <div class="flex justify-between text-sm font-semibold mb-2">
                                 <span class="text-gray-200">CCTV System Design & Network Troubleshooting</span>
@@ -538,7 +539,6 @@
                         </h3>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Competency 1 -->
                             <div class="bg-brand-card p-4 rounded-xl border border-gray-800 flex items-start space-x-3">
                                 <div class="text-brand-accent mt-0.5"><i class="fa-solid fa-boxes-stacked"></i></div>
                                 <div>
@@ -547,7 +547,6 @@
                                 </div>
                             </div>
 
-                            <!-- Competency 2 -->
                             <div class="bg-brand-card p-4 rounded-xl border border-gray-800 flex items-start space-x-3">
                                 <div class="text-brand-cyan mt-0.5"><i class="fa-solid fa-truck-fast"></i></div>
                                 <div>
@@ -556,7 +555,6 @@
                                 </div>
                             </div>
 
-                            <!-- Competency 3 -->
                             <div class="bg-brand-card p-4 rounded-xl border border-gray-800 flex items-start space-x-3">
                                 <div class="text-brand-amber mt-0.5"><i class="fa-solid fa-file-excel"></i></div>
                                 <div>
@@ -565,7 +563,6 @@
                                 </div>
                             </div>
 
-                            <!-- Competency 4 -->
                             <div class="bg-brand-card p-4 rounded-xl border border-gray-800 flex items-start space-x-3">
                                 <div class="text-purple-400 mt-0.5"><i class="fa-solid fa-hard-hat"></i></div>
                                 <div>
@@ -575,7 +572,6 @@
                             </div>
                         </div>
 
-                        <!-- Highlight Card -->
                         <div class="bg-gradient-to-r from-brand-accent/10 to-brand-cyan/10 p-4 rounded-xl border border-brand-accent/20">
                             <div class="flex items-center space-x-3">
                                 <i class="fa-solid fa-users text-brand-accent text-xl"></i>
@@ -592,7 +588,107 @@
             </div>
         </section>
 
-        <section id="education" class="py-20 relative">
+        <!-- Project Gallery Section -->
+        <section id="gallery" class="py-20 relative overflow-hidden">
+            <div class="absolute top-16 left-1/3 w-80 h-80 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-12">
+                    <h2 class="text-xs font-bold text-brand-accent tracking-widest uppercase mb-2">Selected Work</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white font-heading">Project <span class="gradient-text">Gallery</span></p>
+                    <div class="w-16 h-1 bg-brand-accent mx-auto mt-4 rounded-full"></div>
+                    <p class="mt-5 text-gray-400 sm:text-base leading-relaxed">A selection of solar PV installations, O&amp;M maintenance, electrical systems, and site work. Click any card to preview details.</p>
+                </div>
+
+                <!-- Category Filter Controls -->
+                <div class="flex flex-wrap justify-center gap-2.5 mb-10" role="tablist" aria-label="Filter gallery items">
+                    <button type="button" class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-brand-card text-gray-300 border border-gray-800 hover:border-brand-accent/50 transition-all" data-filter="all">All Works</button>
+                    <button type="button" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-brand-card text-gray-300 border border-gray-800 hover:border-brand-accent/50 transition-all" data-filter="solar">Solar PV</button>
+                    <button type="button" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-brand-card text-gray-300 border border-gray-800 hover:border-brand-accent/50 transition-all" data-filter="maintenance">Maintenance</button>
+                    <button type="button" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-brand-card text-gray-300 border border-gray-800 hover:border-brand-accent/50 transition-all" data-filter="electrical">Electrical</button>
+                    <button type="button" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-brand-card text-gray-300 border border-gray-800 hover:border-brand-accent/50 transition-all" data-filter="cctv">CCTV &amp; Site</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <article class="gallery-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="solar">
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gray-900">
+                            <img class="project-image w-full h-full object-cover" src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1000&q=85" alt="Solar panels installed in an open field" loading="lazy">
+                            <span class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-gray-950/80 text-brand-accent text-xs font-semibold border border-brand-accent/30"><i class="fa-solid fa-solar-panel mr-1.5" aria-hidden="true"></i>Solar PV</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white font-heading">Solar PV Installation</h3>
+                            <p class="mt-2 text-sm text-gray-400 leading-relaxed">Add your project location, system capacity, and a short description of your installation work here.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="gallery-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="maintenance">
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gray-900">
+                            <img class="project-image w-full h-full object-cover" src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1000&q=85" alt="Solar panels under a bright sky" loading="lazy">
+                            <span class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-gray-950/80 text-brand-cyan text-xs font-semibold border border-brand-cyan/30"><i class="fa-solid fa-screwdriver-wrench mr-1.5" aria-hidden="true"></i>Maintenance</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white font-heading">Solar Plant O&amp;M</h3>
+                            <p class="mt-2 text-sm text-gray-400 leading-relaxed">Showcase preventive maintenance, inspection, testing, or troubleshooting you completed.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="gallery-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="electrical">
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gray-900">
+                            <img class="project-image w-full h-full object-cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85" alt="Electrical components and circuit board" loading="lazy">
+                            <span class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-gray-950/80 text-brand-amber text-xs font-semibold border border-brand-amber/30"><i class="fa-solid fa-bolt mr-1.5" aria-hidden="true"></i>Electrical</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white font-heading">Electrical Installation</h3>
+                            <p class="mt-2 text-sm text-gray-400 leading-relaxed">Add details about wiring, testing, diagnostics, or other electrical work featured in your photo.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="gallery-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="cctv">
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gray-900">
+                            <img class="project-image w-full h-full object-cover" src="https://images.unsplash.com/photo-1558008258-3256797b43f3?auto=format&fit=crop&w=1000&q=85" alt="Security camera mounted on a building" loading="lazy">
+                            <span class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-gray-950/80 text-brand-cyan text-xs font-semibold border border-brand-cyan/30"><i class="fa-solid fa-video mr-1.5" aria-hidden="true"></i>CCTV</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white font-heading">CCTV System Setup</h3>
+                            <p class="mt-2 text-sm text-gray-400 leading-relaxed">Describe a surveillance installation, camera layout, site survey, or system upgrade.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="gallery-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="cctv">
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gray-900">
+                            <img class="project-image w-full h-full object-cover" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85" alt="Bright commercial workspace" loading="lazy">
+                            <span class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-gray-950/80 text-brand-accent text-xs font-semibold border border-brand-accent/30"><i class="fa-solid fa-clipboard-check mr-1.5" aria-hidden="true"></i>Site Work</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white font-heading">Site Survey &amp; Planning</h3>
+                            <p class="mt-2 text-sm text-gray-400 leading-relaxed">Add a note about the site assessment, planning, or coordination work shown here.</p>
+                        </div>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="gallery-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="electrical">
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gray-900">
+                            <img class="project-image w-full h-full object-cover" src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1000&q=85" alt="Electricity transmission infrastructure" loading="lazy">
+                            <span class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-gray-950/80 text-brand-amber text-xs font-semibold border border-brand-amber/30"><i class="fa-solid fa-people-group mr-1.5" aria-hidden="true"></i>Teamwork</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white font-heading">Field Team Coordination</h3>
+                            <p class="mt-2 text-sm text-gray-400 leading-relaxed">Use this card to highlight a team project, site milestone, or another piece of work.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <p class="max-w-3xl mx-auto mt-8 text-center text-xs text-gray-500">Sample images are for layout preview only. Replace them with photos from your own installations and update each project description.</p>
+            </div>
+        </section>
+
+        <!-- Education & References Section -->
+        <section id="education" class="py-20 bg-brand-dark/50 border-t border-gray-800/60 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <h2 class="text-xs font-bold text-brand-accent tracking-widest uppercase mb-2">Qualifications</h2>
@@ -609,7 +705,6 @@
                             <span>Academic History</span>
                         </h3>
 
-                        <!-- Edu Item 1 -->
                         <div class="glass-card p-6 rounded-2xl border-l-4 border-l-brand-accent">
                             <div class="flex justify-between items-start mb-2">
                                 <div>
@@ -625,7 +720,6 @@
                             </div>
                         </div>
 
-                        <!-- Edu Item 2 -->
                         <div class="glass-card p-6 rounded-2xl border-l-4 border-l-brand-cyan">
                             <div class="flex justify-between items-start mb-2">
                                 <div>
@@ -649,7 +743,6 @@
                             <span>Professional References</span>
                         </h3>
 
-                        <!-- Ref Item 1 -->
                         <div class="glass-card p-6 rounded-2xl">
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 text-brand-accent flex items-center justify-center font-bold text-xl flex-shrink-0">
@@ -666,7 +759,6 @@
                             </div>
                         </div>
 
-                        <!-- Ref Item 2 -->
                         <div class="glass-card p-6 rounded-2xl">
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan flex items-center justify-center font-bold text-xl flex-shrink-0">
@@ -689,7 +781,8 @@
             </div>
         </section>
 
-        <section id="contact" class="py-20 bg-brand-dark/50 border-t border-gray-800">
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-brand-dark border-t border-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <h2 class="text-xs font-bold text-brand-accent tracking-widest uppercase mb-2">Get In Touch</h2>
@@ -739,7 +832,6 @@
                                 </div>
                             </div>
 
-                            <!-- Quick Action Buttons -->
                             <div class="pt-4 flex gap-3">
                                 <a href="tel:+8801849575623" class="flex-1 py-3 text-center bg-brand-accent hover:bg-brand-accentHover text-gray-950 font-bold rounded-xl text-sm transition-colors">
                                     <i class="fa-solid fa-phone mr-1"></i> Call Now
@@ -782,7 +874,6 @@
                                 </button>
                             </form>
 
-                            <!-- Success / Notice Box -->
                             <div id="form-response" class="hidden mt-4 p-4 rounded-xl bg-brand-accent/10 border border-brand-accent/40 text-brand-accent text-xs text-center">
                                 Thank you! Your message inquiry prompt has been prepared. You can also call directly at +8801849575623.
                             </div>
@@ -794,6 +885,20 @@
         </section>
 
     </main>
+
+    <!-- Lightbox Modal for Gallery -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-sm" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="relative max-w-4xl w-full glass-panel rounded-2xl overflow-hidden border border-gray-700 shadow-2xl">
+            <button id="lightbox-close" type="button" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-950/80 text-white hover:text-brand-accent flex items-center justify-center text-xl transition-colors" aria-label="Close image preview">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="" class="w-full max-h-[70vh] object-contain bg-gray-950">
+            <div class="p-6">
+                <h3 id="lightbox-title" class="text-xl font-bold text-white font-heading"></h3>
+                <p id="lightbox-desc" class="mt-1.5 text-sm text-gray-400"></p>
+            </div>
+        </div>
+    </div>
 
     <footer class="bg-brand-dark border-t border-gray-800/80 py-8 text-center text-xs text-gray-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
@@ -818,7 +923,71 @@
             });
         });
 
-        // Contact Form Handling (Without alert)
+        // Gallery Filter Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Lightbox Modal Logic
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxDesc = document.getElementById('lightbox-desc');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const title = item.querySelector('h3').textContent;
+                const desc = item.querySelector('p').textContent;
+
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxTitle.textContent = title;
+                lightboxDesc.textContent = desc;
+
+                lightboxModal.classList.remove('hidden');
+                lightboxModal.classList.add('flex');
+                lightboxModal.setAttribute('aria-hidden', 'false');
+            });
+        });
+
+        function closeLightbox() {
+            lightboxModal.classList.add('hidden');
+            lightboxModal.classList.remove('flex');
+            lightboxModal.setAttribute('aria-hidden', 'true');
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                closeLightbox();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
+
+        // Contact Form Handling
         function handleFormSubmit(e) {
             e.preventDefault();
             const responseBox = document.getElementById('form-response');
